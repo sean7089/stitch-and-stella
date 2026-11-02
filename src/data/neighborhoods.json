@@ -9,7 +9,7 @@
     "wikipedia": "https://en.wikipedia.org/wiki/Houston_Heights",
     "geo": { "lat": 29.7981, "lng": -95.3978 },
     "imageKey": "heights",
-    "imageAlt": "Tan dog in a rose gingham bandana standing on a sidewalk in front of a craftsman bungalow and a live oak.",
+    "imageAlt": "Mack, a mini Australian shepherd, wearing a pink gingham bandana stitched with red hearts and the name Mack.",
     "landmarks": ["Heights Boulevard", "19th Street", "White Oak Bayou", "Yale Street", "Woodland Heights"],
     "handoff": {
       "id": "heights-porch",
@@ -35,7 +35,7 @@
     "wikipedia": "https://en.wikipedia.org/wiki/Garden_Oaks,_Houston",
     "geo": null,
     "imageKey": "garden",
-    "imageAlt": "Golden dog lying on a shaded lawn in a cream bandana with green stitching, with a large oak and a porch behind.",
+    "imageAlt": "Allie, a bernedoodle, wearing a pink gingham bandana with her name stitched on it, sitting beside a stone fireplace.",
     "landmarks": ["Garden Oaks oaks and pecans", "North Shepherd", "the blocks north of the North Loop"],
     "handoff": {
       "id": "garden-oaks-drop",

@@ -27,7 +27,7 @@ const jsonLd = graph(Astro.site, [
 <Base
   title="Dog bandanas in Houston | Stitch & Stella"
   description="Stitch & Stella stitches cotton and linen dog bandanas in Houston and hands them off in the Heights and Garden Oaks."
-  image={photos.flatlay}
+  image={photos.hero}
   jsonLd={jsonLd}
 >
   <article class="mx-auto max-w-3xl px-5 py-14">
@@ -65,16 +65,4 @@ const jsonLd = graph(Astro.site, [
       ))
     }
   </section>
-  <div class="mx-auto max-w-6xl px-5 pb-16">
-    <Image
-      src={photos.flatlay}
-      alt="Three folded dog bandanas, blush, ivory, and black, on blush linen with a spool of pink thread and embroidery scissors."
-      widths={[640, 1200]}
-      sizes="(min-width: 1024px) 72rem, 100vw"
-      quality={58}
-      format="avif"
-      loading="lazy"
-      class="h-auto w-full rounded-3xl"
-    />
-  </div>
 </Base>
