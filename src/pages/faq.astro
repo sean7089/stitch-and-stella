@@ -1,0 +1,71 @@
+---
+import Base from '../layouts/Base.astro';
+import catalog from '../data/catalog.json';
+import faq from '../data/faq.json';
+import { formatMoney } from '../lib/pricing';
+import { breadcrumb, faqNode, graph } from '../lib/schema';
+
+const rows = [
+  { label: 'Handmade bandana', amount: catalog.basePriceCents },
+  ...catalog.shapes.filter((item) => item.priceCents).map((item) => ({ label: item.name, amount: item.priceCents })),
+  ...catalog.sizes.filter((item) => item.priceCents).map((item) => ({ label: `Size ${item.name}`, amount: item.priceCents })),
+  ...catalog.fabrics.filter((item) => item.priceCents).map((item) => ({ label: item.name, amount: item.priceCents })),
+  ...catalog.edges.filter((item) => item.priceCents).map((item) => ({ label: item.name, amount: item.priceCents })),
+  { label: 'Any motif', amount: catalog.motifs.find((item) => item.priceCents)?.priceCents ?? 0 },
+  { label: 'Name on the cloth', amount: catalog.monogram.priceCents },
+];
+
+const jsonLd = graph(Astro.site, [
+  faqNode(),
+  breadcrumb(Astro.site, [
+    { name: 'Home', path: '/' },
+    { name: 'Questions', path: '/faq' },
+  ]),
+]);
+---
+
+<Base
+  title="Dog bandana questions | Stitch & Stella"
+  description="Prices, neck measurements, wash care, safety, and handoff times for Stitch & Stella bandanas in the Heights and Garden Oaks."
+  jsonLd={jsonLd}
+>
+  <section class="mx-auto max-w-3xl px-5 py-14">
+    <h1 class="font-serif text-5xl leading-tight">Questions</h1>
+    <p class="mt-4 text-lg leading-8 text-ink-soft">Straight answers about price, fit, safety, and the two Houston handoffs.</p>
+    <div class="mt-8 divide-y divide-blush-200 border-y border-blush-200">
+      {
+        faq.map((item) => (
+          <details class="py-4" id={item.id}>
+            <summary class="cursor-pointer py-2 text-lg font-semibold">{item.question}</summary>
+            {item.answer.map((paragraph) => (
+              <p class="mt-2 leading-7 text-ink-soft">{paragraph}</p>
+            ))}
+          </details>
+        ))
+      }
+    </div>
+  </section>
+  <section class="mx-auto max-w-3xl px-5 pb-16">
+    <h2 class="font-serif text-3xl">Price list</h2>
+    <p class="mt-3 leading-7 text-ink-soft">These are the numbers the designer adds. Thread color does not change the price.</p>
+    <table class="mt-6 w-full text-left">
+      <caption class="sr-only">Bandana price additions in US dollars</caption>
+      <thead>
+        <tr class="border-b border-blush-300 text-sm uppercase tracking-wide text-rose-800">
+          <th class="py-3 font-semibold" scope="col">Item</th>
+          <th class="py-3 text-right font-semibold" scope="col">Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          rows.map((row) => (
+            <tr class="border-b border-blush-200">
+              <td class="py-3">{row.label}</td>
+              <td class="py-3 text-right">{row.label === 'Handmade bandana' ? formatMoney(row.amount) : `+${formatMoney(row.amount)}`}</td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </section>
+</Base>

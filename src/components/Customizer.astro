@@ -1,0 +1,229 @@
+---
+import catalog from '../data/catalog.json';
+import themes from '../data/themes.json';
+import { describeSelection, formatMoney, type Priced, type Selection } from '../lib/pricing';
+
+interface Props {
+  selection: Selection;
+  priced: Priced;
+}
+
+const { selection, priced } = Astro.props;
+const shape = catalog.shapes.find((item) => item.id === selection.shapeId) ?? catalog.shapes[0];
+const fabric = catalog.fabrics.find((item) => item.id === selection.fabricId) ?? catalog.fabrics[0];
+const edge = catalog.edges.find((item) => item.id === selection.edgeId) ?? catalog.edges[0];
+const thread = catalog.threads.find((item) => item.id === selection.threadId) ?? catalog.threads[0];
+const description = describeSelection(selection);
+const card =
+  'flex min-h-12 cursor-pointer flex-col justify-center rounded-2xl border border-blush-300 bg-paper px-3 py-3 has-[:checked]:border-rose-800 has-[:checked]:bg-white';
+const plus = (cents: number) => (cents > 0 ? `+${formatMoney(cents)}` : 'Included');
+---
+
+<form id="design-form" class="grid gap-10 lg:grid-cols-[minmax(0,1fr)_22rem]" method="get" action="/contact">
+  <div class="space-y-10">
+    <fieldset>
+      <legend class="font-serif text-3xl">Theme</legend>
+      <p class="mt-2 max-w-xl text-ink-soft">A theme fills in a cloth, an edge, a thread, and a motif. Change any of them after.</p>
+      <div class="mt-4 grid gap-3 sm:grid-cols-3">
+        {
+          themes.map((theme) => (
+            <label class={card}>
+              <input class="sr-only" type="radio" name="theme" value={theme.id} checked={selection.themeId === theme.id} />
+              <span class="font-semibold">{theme.name}</span>
+              <span class="text-sm text-ink-soft">{theme.season}</span>
+            </label>
+          ))
+        }
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend class="font-serif text-3xl">The bandana</legend>
+      <p class="mt-4 text-sm font-semibold uppercase tracking-wide text-rose-800">Cut</p>
+      <div class="mt-3 grid gap-3 sm:grid-cols-3">
+        {
+          catalog.shapes.map((item) => (
+            <label class={card}>
+              <input class="sr-only" type="radio" name="shape" value={item.id} checked={selection.shapeId === item.id} />
+              <span class="font-semibold">{item.name}</span>
+              <span class="text-sm text-ink-soft">{item.description}</span>
+              <span class="mt-2 text-sm font-semibold text-rose-800">{plus(item.priceCents)}</span>
+            </label>
+          ))
+        }
+      </div>
+      <p class="mt-6 text-sm font-semibold uppercase tracking-wide text-rose-800">Cloth</p>
+      <div class="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4">
+        {
+          catalog.fabrics.map((item) => (
+            <label class={card}>
+              <input class="sr-only" type="radio" name="fabric" value={item.id} checked={selection.fabricId === item.id} />
+              <span class="mb-2 h-8 w-8 rounded-full border border-blush-300" style={`background:${item.hex}`}></span>
+              <span class="font-semibold">{item.name}</span>
+              <span class="text-sm text-ink-soft">{plus(item.priceCents)}</span>
+            </label>
+          ))
+        }
+      </div>
+      <p class="mt-6 text-sm font-semibold uppercase tracking-wide text-rose-800">Neck size</p>
+      <p class="mt-2 text-sm text-ink-soft">Measure where the collar sits. Between sizes, size up. Ties are extra and are not part of the number.</p>
+      <div class="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-5">
+        {
+          catalog.sizes.map((item) => (
+            <label class={card}>
+              <input class="sr-only" type="radio" name="size" value={item.id} checked={selection.sizeId === item.id} />
+              <span class="font-semibold">Size {item.name}</span>
+              <span class="text-sm text-ink-soft">{item.neckMinIn}–{item.neckMaxIn} in</span>
+              <span class="mt-1 text-sm font-semibold text-rose-800">{plus(item.priceCents)}</span>
+            </label>
+          ))
+        }
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend class="font-serif text-3xl">The stitching</legend>
+      <p class="mt-4 text-sm font-semibold uppercase tracking-wide text-rose-800">Edge</p>
+      <div class="mt-3 grid gap-3 sm:grid-cols-2">
+        {
+          catalog.edges.map((item) => (
+            <label class={card}>
+              <input class="sr-only" type="radio" name="edge" value={item.id} checked={selection.edgeId === item.id} />
+              <span class="font-semibold">{item.name}</span>
+              <span class="text-sm text-ink-soft">{item.description}</span>
+              <span class="mt-2 text-sm font-semibold text-rose-800">{plus(item.priceCents)}</span>
+            </label>
+          ))
+        }
+      </div>
+      <p class="mt-6 text-sm font-semibold uppercase tracking-wide text-rose-800">Thread</p>
+      <div class="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4">
+        {
+          catalog.threads.map((item) => (
+            <label class={card}>
+              <input class="sr-only" type="radio" name="thread" value={item.id} checked={selection.threadId === item.id} />
+              <span class="mb-2 h-8 w-8 rounded-full border border-blush-300" style={`background:${item.hex}`}></span>
+              <span class="font-semibold">{item.name}</span>
+            </label>
+          ))
+        }
+      </div>
+      <p class="mt-6 text-sm font-semibold uppercase tracking-wide text-rose-800">Motif</p>
+      <div class="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3">
+        {
+          catalog.motifs.map((item) => (
+            <label class={card}>
+              <input class="sr-only" type="radio" name="motif" value={item.id} checked={selection.motifId === item.id} />
+              <span class="font-semibold">{item.name}</span>
+              <span class="text-sm font-semibold text-rose-800">{plus(item.priceCents)}</span>
+            </label>
+          ))
+        }
+      </div>
+      <label class="mt-6 block" for="monogram">
+        <span class="text-sm font-semibold uppercase tracking-wide text-rose-800">Name on the cloth</span>
+        <span class="mt-1 block text-sm text-ink-soft">{catalog.monogram.description} {formatMoney(catalog.monogram.priceCents)} when you add one.</span>
+        <input
+          id="monogram"
+          class="mt-3 min-h-12 w-full rounded-2xl border border-blush-300 bg-paper px-4 text-base"
+          name="monogram"
+          maxlength={catalog.monogram.maxLength}
+          value={selection.monogram}
+          autocomplete="off"
+          placeholder="Stella"
+        />
+      </label>
+    </fieldset>
+  </div>
+
+  <aside class="lg:sticky lg:top-6 lg:self-start">
+    <div class="rounded-3xl border border-blush-200 bg-paper p-5">
+      <svg id="bandana-svg" viewBox="0 0 400 340" role="img" class="mx-auto h-auto w-full max-w-sm" aria-labelledby="bandana-title">
+        <title id="bandana-title">{description}</title>
+        <defs>
+          <pattern id="gingham" width="20" height="20" patternUnits="userSpaceOnUse">
+            <rect width="10" height="10" fill="#3a2430" opacity="0.16"></rect>
+            <rect x="10" y="10" width="10" height="10" fill="#3a2430" opacity="0.16"></rect>
+          </pattern>
+          <pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse">
+            <circle cx="4" cy="4" r="1.6" fill="#3a2430" opacity="0.35"></circle>
+          </pattern>
+        </defs>
+        <polygon id="bandana-cloth" points={shape.points} fill={fabric.hex}></polygon>
+        <polygon id="bandana-pattern" points={shape.points} fill={fabric.pattern === 'dots' ? 'url(#dots)' : 'url(#gingham)'} hidden={fabric.pattern === 'solid'}></polygon>
+        <polygon
+          id="bandana-stitch"
+          points={shape.points}
+          fill="none"
+          stroke={thread.hex}
+          stroke-width={edge.width}
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-dasharray={edge.dash === '0' ? 'none' : edge.dash}
+        ></polygon>
+        <g id="motifs" fill={thread.hex} stroke={thread.hex}>
+          <g data-motif="paw" hidden={selection.motifId !== 'paw'}>
+            <circle cx="200" cy="176" r="11"></circle>
+            <circle cx="184" cy="158" r="5"></circle>
+            <circle cx="200" cy="152" r="5"></circle>
+            <circle cx="216" cy="158" r="5"></circle>
+          </g>
+          <g data-motif="heart" hidden={selection.motifId !== 'heart'}>
+            <path d="M200 188c-12 0-22-10-22-20 0-8 6-14 14-14 5 0 8 2 8 2s3-2 8-2c8 0 14 6 14 14 0 10-10 20-22 20z"></path>
+          </g>
+          <g data-motif="bone" hidden={selection.motifId !== 'bone'}>
+            <rect x="184" y="166" width="32" height="10" rx="5"></rect>
+            <circle cx="184" cy="166" r="7"></circle>
+            <circle cx="184" cy="176" r="7"></circle>
+            <circle cx="216" cy="166" r="7"></circle>
+            <circle cx="216" cy="176" r="7"></circle>
+          </g>
+          <g data-motif="star" hidden={selection.motifId !== 'star'}>
+            <polygon points="200,148 206,166 224,166 210,176 216,194 200,184 184,194 190,176 176,166 194,166"></polygon>
+          </g>
+          <g data-motif="pumpkin" hidden={selection.motifId !== 'pumpkin'}>
+            <ellipse cx="200" cy="176" rx="16" ry="14"></ellipse>
+            <rect x="197" y="158" width="6" height="8"></rect>
+          </g>
+          <g data-motif="bat" hidden={selection.motifId !== 'bat'}>
+            <path d="M200 176c-8-16-24-18-36-8 10 2 16 10 16 10s-8 2-12 10c10-4 22-6 32-2 10-4 22-2 32 2-4-8-12-10-12-10s6-8 16-10c-12-10-28-8-36 8z"></path>
+          </g>
+          <g data-motif="holly" hidden={selection.motifId !== 'holly'}>
+            <ellipse cx="190" cy="170" rx="10" ry="6" transform="rotate(-30 190 170)"></ellipse>
+            <ellipse cx="210" cy="170" rx="10" ry="6" transform="rotate(30 210 170)"></ellipse>
+            <circle cx="200" cy="182" r="3.5"></circle>
+          </g>
+          <g data-motif="snowflake" hidden={selection.motifId !== 'snowflake'} fill="none" stroke-width="2">
+            <path d="M200 154v36M184 162l32 28M216 162l-32 28"></path>
+          </g>
+        </g>
+        <text id="bandana-monogram" x={shape.text[0]} y={shape.text[1]} text-anchor="middle" font-size="22" font-family="Palatino, Georgia, serif" fill={thread.hex}>{selection.monogram}</text>
+      </svg>
+      <p id="bandana-caption" class="mt-3 text-sm leading-6 text-ink-soft" aria-live="polite">{description}</p>
+      <ul id="price-lines" class="mt-4 space-y-2 text-sm">
+        {
+          priced.lines.map((line) => (
+            <li class="flex justify-between gap-4">
+              <span>{line.label}</span>
+              <span>{formatMoney(line.amountCents)}</span>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="mt-4 flex items-baseline justify-between border-t border-blush-200 pt-4">
+        <span class="font-semibold">Total</span>
+        <span id="price-total" class="font-serif text-4xl">{formatMoney(priced.totalCents)}</span>
+      </p>
+      <p id="lead-time" class="mt-2 text-sm text-ink-soft">Ready in {priced.leadDays} studio days after the studio confirms.</p>
+      <button id="continue-button" class="mt-5 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-rose-800 px-5 font-semibold text-white" type="submit">
+        Continue · {formatMoney(priced.totalCents)}
+      </button>
+      <p class="mt-3 text-sm text-ink-soft">Nothing is charged here. The next page turns this into a stitch ticket you email to the studio.</p>
+    </div>
+  </aside>
+</form>
+
+<script>
+  import { initCustomizer } from '../scripts/customizer';
+  initCustomizer();
+</script>

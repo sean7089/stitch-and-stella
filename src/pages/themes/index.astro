@@ -1,0 +1,48 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import themes from '../../data/themes.json';
+import { photoFor } from '../../lib/images';
+import { breadcrumb, graph } from '../../lib/schema';
+
+const jsonLd = graph(Astro.site, [
+  breadcrumb(Astro.site, [
+    { name: 'Home', path: '/' },
+    { name: 'Themes', path: '/themes' },
+  ]),
+]);
+---
+
+<Base
+  title="Bandana themes | Stitch & Stella"
+  description="Everyday blush, Halloween, and Christmas dog bandanas from Stitch & Stella. Each theme is a starting stitch you can still change."
+  jsonLd={jsonLd}
+>
+  <section class="mx-auto max-w-6xl px-5 py-14">
+    <h1 class="font-serif text-5xl leading-tight">Three themes. One way of stitching.</h1>
+    <p class="mt-4 max-w-2xl text-lg leading-8 text-ink-soft">
+      A theme picks the cloth, the edge, the thread, and the motif. You can change every one of those on the designer. October and December in Houston stay warm enough for cotton.
+    </p>
+    <div class="mt-10 grid gap-8 md:grid-cols-3">
+      {
+        themes.map((theme) => (
+          <a class="rounded-3xl bg-paper p-3" href={`/themes/${theme.id}`}>
+            <Image
+              src={photoFor(theme.imageKey)}
+              alt={theme.imageAlt}
+              widths={[400, 700]}
+              sizes="(min-width: 768px) 22rem, 100vw"
+              quality={55}
+              format="avif"
+              loading="lazy"
+              class="h-auto w-full rounded-2xl"
+            />
+            <h2 class="mt-4 px-2 font-serif text-3xl">{theme.name}</h2>
+            <p class="mt-2 px-2 text-sm font-semibold uppercase tracking-wide text-rose-800">{theme.season}</p>
+            <p class="mt-2 px-2 pb-3 leading-7 text-ink-soft">{theme.summary}</p>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</Base>

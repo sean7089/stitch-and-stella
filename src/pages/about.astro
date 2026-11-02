@@ -1,0 +1,81 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import business from '../data/business.json';
+import catalog from '../data/catalog.json';
+import { photos } from '../lib/images';
+import { formatMoney } from '../lib/pricing';
+import { breadcrumb, graph } from '../lib/schema';
+
+const jsonLd = graph(Astro.site, [
+  breadcrumb(Astro.site, [
+    { name: 'Home', path: '/' },
+    { name: 'About', path: '/about' },
+  ]),
+]);
+---
+
+<Base
+  title="About the studio | Stitch & Stella"
+  description="Stitch & Stella is a Houston studio that stitches made-to-order cotton and linen dog bandanas for the Heights and Garden Oaks."
+  image={photos.stitch}
+  jsonLd={jsonLd}
+>
+  <article class="mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-2 md:py-20">
+    <div>
+      <p class="text-sm font-semibold uppercase tracking-wide text-rose-800">The studio</p>
+      <h1 class="mt-3 font-serif text-5xl leading-tight">Named Stella. Stitched in Houston.</h1>
+      <div class="mt-6 space-y-4 text-lg leading-8 text-ink-soft">
+        <p>
+          Stitch &amp; Stella makes one thing: a dog bandana cut to a neck measurement and finished with an edge you can point at. The name on the studio is Stella. The name on the cloth, if you want one, is your dog’s.
+        </p>
+        <p>
+          There is no shop floor. Saturday mornings are the Heights handoff, 77008 and 77009. Thursday evenings are the Garden Oaks drop, 77018. The rest of the week is for stitching and for answering tickets.
+        </p>
+        <p>
+          The cloth is {business.materials.join(', ').toLowerCase()}. Halloween and Christmas use the same weight of cotton. A Houston December does not get a fleece bandana from this studio.
+        </p>
+      </div>
+    </div>
+    <Image
+      src={photos.stitch}
+      alt="Close view of rose blanket stitching along the edge of blush cotton, with a needle and floss beside it."
+      widths={[480, 800]}
+      sizes="(min-width: 768px) 32rem, 100vw"
+      quality={60}
+      format="avif"
+      loading="eager"
+      class="h-auto w-full rounded-3xl"
+    />
+  </article>
+
+  <section class="bg-paper">
+    <div class="mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-3">
+      <div>
+        <h2 class="font-serif text-2xl">Care</h2>
+        <ul class="mt-3 space-y-2 leading-7 text-ink-soft">
+          {business.care.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+      <div>
+        <h2 class="font-serif text-2xl">Safety</h2>
+        <ul class="mt-3 space-y-2 leading-7 text-ink-soft">
+          {business.safety.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+      <div>
+        <h2 class="font-serif text-2xl">Not included</h2>
+        <ul class="mt-3 space-y-2 leading-7 text-ink-soft">
+          {business.notIncluded.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-5 py-14">
+    <h2 class="font-serif text-3xl">What a ticket is</h2>
+    <p class="mt-4 max-w-3xl leading-7 text-ink-soft">
+      The designer writes down the cloth, the stitch, and the price. The ticket page puts your name and handoff on it and opens an email to {business.email}. The same facts are published as a catalog file so a search engine or an assistant can quote the studio without guessing. A handmade bandana starts at {formatMoney(catalog.basePriceCents)}. The lead time is {catalog.leadDays} studio days, longer for an heirloom edge.
+    </p>
+  </section>
+</Base>

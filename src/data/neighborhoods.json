@@ -1,0 +1,54 @@
+[
+  {
+    "id": "the-heights",
+    "name": "The Heights",
+    "pageTitle": "Dog bandanas in the Heights",
+    "metaDescription": "Stitch & Stella hands off handmade dog bandanas in Houston's Heights, 77008 and 77009, on Saturday mornings.",
+    "zips": ["77008", "77009"],
+    "wikidata": "https://www.wikidata.org/wiki/Q3141390",
+    "wikipedia": "https://en.wikipedia.org/wiki/Houston_Heights",
+    "geo": { "lat": 29.7981, "lng": -95.3978 },
+    "imageKey": "heights",
+    "imageAlt": "Tan dog in a rose gingham bandana standing on a sidewalk in front of a craftsman bungalow and a live oak.",
+    "landmarks": ["Heights Boulevard", "19th Street", "White Oak Bayou", "Yale Street", "Woodland Heights"],
+    "handoff": {
+      "id": "heights-porch",
+      "dayOfWeek": "Saturday",
+      "opens": "09:00",
+      "closes": "11:00",
+      "label": "Saturday Heights handoff, 9–11 a.m."
+    },
+    "paragraphs": [
+      "Stitch & Stella hands finished bandanas to Heights dogs on Saturday mornings, 9 to 11. The area on this page is Houston Heights in 77008 and 77009: the bungalow blocks inside Loop 610, north of Buffalo Bayou.",
+      "A Heights bandana spends its life on sidewalks, along Heights Boulevard, and on the White Oak Bayou trail. The cloth is cotton or linen so a dog is not wearing a heavy layer in Houston humidity. The listed size is the neck where the collar sits. The ties are extra, so they are not part of that measurement.",
+      "There is no shop floor and no published street address. The stitch-ticket reply names the block for that Saturday. If you are in 77008 or 77009, choose the Heights handoff. If you say “the Heights” and your ZIP is 77007, write that on the ticket. 77007 is the western edge, and the studio will say whether that Saturday’s block is a reasonable walk.",
+      "The classic triangle is the cut we picture on a Heights sidewalk. A square kerchief has more cloth at the chest and can brush a narrow walk. You can still order it. The suggestion is about the block, not a rule."
+    ]
+  },
+  {
+    "id": "garden-oaks",
+    "name": "Garden Oaks",
+    "pageTitle": "Dog bandanas in Garden Oaks",
+    "metaDescription": "Stitch & Stella drops handmade dog bandanas in Garden Oaks, Houston 77018, on Thursday evenings.",
+    "zips": ["77018"],
+    "wikidata": "https://www.wikidata.org/wiki/Q5522273",
+    "wikipedia": "https://en.wikipedia.org/wiki/Garden_Oaks,_Houston",
+    "geo": null,
+    "imageKey": "garden",
+    "imageAlt": "Golden dog lying on a shaded lawn in a cream bandana with green stitching, with a large oak and a porch behind.",
+    "landmarks": ["Garden Oaks oaks and pecans", "North Shepherd", "the blocks north of the North Loop"],
+    "handoff": {
+      "id": "garden-oaks-drop",
+      "dayOfWeek": "Thursday",
+      "opens": "17:00",
+      "closes": "19:00",
+      "label": "Thursday Garden Oaks drop, 5–7 p.m."
+    },
+    "paragraphs": [
+      "Garden Oaks is the 77018 neighborhood north of Houston Heights, platted in 1937, with oak, pecan, and pine shade and larger yards than a typical Heights lot. Stitch & Stella drops finished bandanas there on Thursday evenings, 5 to 7.",
+      "This page is Garden Oaks, not the whole of 77018. Oak Forest sits next door. If that is you, choose Garden Oaks on the ticket and the studio will say whether Thursday’s drop reaches your block. We would rather refuse a stop than pretend one neighborhood page covers three.",
+      "A kerchief has room to lie in a Garden Oaks yard. The same cut can be awkward on a narrow Heights sidewalk. Both cuts are available in either place. Shade from the oaks is the other difference: a dark evergreen stitch still reads in the photo under the tree, which is why the Garden Oaks portrait uses cream cloth and a green edge.",
+      "The Thursday reply email names the stop. It is a handoff, not a courier route across Houston. North Shepherd is the road people use to describe where this is. The studio does not claim the far side of US 290."
+    ]
+  }
+]

@@ -1,0 +1,74 @@
+---
+import business from '../data/business.json';
+
+interface Props {
+  pathname: string;
+}
+
+const { pathname } = Astro.props;
+const path = pathname.replace(/\/$/, '') || '/';
+
+const links = [
+  { href: '/customize', label: 'Design' },
+  { href: '/themes', label: 'Themes' },
+  { href: '/houston', label: 'Houston' },
+  { href: '/about', label: 'About' },
+  { href: '/faq', label: 'Questions' },
+];
+
+function current(href: string): boolean {
+  if (href === '/themes') return path === '/themes' || path.startsWith('/themes/');
+  if (href === '/houston') return path === '/houston' || path.startsWith('/neighborhoods/');
+  return path === href;
+}
+---
+
+<header class="border-b border-blush-200 bg-blush-50">
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4">
+    <a href="/" class="min-h-12 leading-tight" aria-current={path === '/' ? 'page' : undefined}>
+      <span class="block font-serif text-2xl text-ink">Stitch &amp; Stella</span>
+      <span class="block text-sm text-ink-soft">Houston dog bandanas</span>
+    </a>
+    <nav class="hidden items-center gap-1 lg:flex" aria-label="Primary">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            aria-current={current(link.href) ? 'page' : undefined}
+            class:list={[
+              'inline-flex min-h-12 items-center rounded-full px-3 text-sm font-semibold',
+              current(link.href) ? 'bg-blush-100 text-rose-800' : 'text-ink hover:bg-blush-100',
+            ]}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      {
+        business.phone && (
+          <a class="inline-flex min-h-12 items-center px-3 font-semibold text-rose-800" href={`tel:${business.phone}`}>
+            Call
+          </a>
+        )
+      }
+    </nav>
+    <details class="relative lg:hidden">
+      <summary class="inline-flex min-h-12 cursor-pointer list-none items-center rounded-full border border-rose-800 px-4 font-semibold text-rose-800">
+        Menu
+      </summary>
+      <nav class="absolute right-0 z-30 mt-2 w-56 rounded-2xl border border-blush-200 bg-paper p-2 shadow-sm" aria-label="Primary">
+        {
+          links.map((link) => (
+            <a
+              href={link.href}
+              aria-current={current(link.href) ? 'page' : undefined}
+              class="flex min-h-12 items-center rounded-xl px-3 font-semibold text-ink hover:bg-blush-100"
+            >
+              {link.label}
+            </a>
+          ))
+        }
+      </nav>
+    </details>
+  </div>
+</header>

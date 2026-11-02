@@ -1,0 +1,81 @@
+{
+  "currency": "USD",
+  "leadDays": 5,
+  "basePriceCents": 3200,
+  "shapes": [
+    {
+      "id": "triangle",
+      "name": "Classic triangle",
+      "description": "Ties at the neck. The cut in the porch portrait.",
+      "priceCents": 0,
+      "points": "200,28 368,308 32,308",
+      "text": [200, 214]
+    },
+    {
+      "id": "slide",
+      "name": "Collar slide",
+      "description": "A sleeve that slips over the collar the dog already wears. No knot.",
+      "priceCents": 400,
+      "points": "48,118 352,118 352,230 48,230",
+      "text": [200, 186]
+    },
+    {
+      "id": "kerchief",
+      "name": "Square kerchief",
+      "description": "More cloth at the chest. Easier in a big yard than on a narrow sidewalk.",
+      "priceCents": 600,
+      "points": "200,30 350,170 200,310 50,170",
+      "text": [200, 178]
+    }
+  ],
+  "sizes": [
+    { "id": "xs", "name": "XS", "neckMinIn": 8, "neckMaxIn": 11, "priceCents": 0, "note": "Toy breeds" },
+    { "id": "s", "name": "S", "neckMinIn": 11, "neckMaxIn": 14, "priceCents": 0, "note": "Small dogs" },
+    { "id": "m", "name": "M", "neckMinIn": 14, "neckMaxIn": 18, "priceCents": 200, "note": "Most house dogs" },
+    { "id": "l", "name": "L", "neckMinIn": 18, "neckMaxIn": 22, "priceCents": 400, "note": "Large dogs" },
+    { "id": "xl", "name": "XL", "neckMinIn": 22, "neckMaxIn": 26, "priceCents": 600, "note": "Broad necks" }
+  ],
+  "fabrics": [
+    { "id": "blush-linen", "name": "Blush linen", "hex": "#e7b7c2", "pattern": "solid", "themes": ["blush"], "priceCents": 0, "description": "Light linen for a Houston sidewalk." },
+    { "id": "rose-gingham", "name": "Rose gingham", "hex": "#d98b98", "pattern": "gingham", "themes": ["blush"], "priceCents": 200, "description": "A small check. The cloth on the Heights walk." },
+    { "id": "cream-cotton", "name": "Cream cotton", "hex": "#f3ecdf", "pattern": "solid", "themes": ["blush", "christmas"], "priceCents": 0, "description": "Plain cotton that takes a dark stitch cleanly." },
+    { "id": "midnight", "name": "Midnight cotton", "hex": "#1c1a22", "pattern": "solid", "themes": ["halloween"], "priceCents": 0, "description": "Black cotton. Pair it with pumpkin or cream thread." },
+    { "id": "rust", "name": "Rust cotton", "hex": "#b85a32", "pattern": "solid", "themes": ["halloween"], "priceCents": 0, "description": "A warm rust that still sits in a pink room." },
+    { "id": "ivory", "name": "Ivory cotton", "hex": "#f7f3ea", "pattern": "solid", "themes": ["christmas"], "priceCents": 0, "description": "The Christmas ground cloth. Evergreen stitch shows up on it." },
+    { "id": "evergreen", "name": "Evergreen cotton", "hex": "#1f4d3a", "pattern": "solid", "themes": ["christmas"], "priceCents": 0, "description": "Deep green. Use cream or holly-red thread." },
+    { "id": "snow-dot", "name": "Snow dot", "hex": "#f4f1ea", "pattern": "dots", "themes": ["christmas"], "priceCents": 200, "description": "Ivory ground with a quiet dot. Still cotton. Houston Decembers do not need fleece." }
+  ],
+  "edges": [
+    { "id": "blanket", "name": "Blanket stitch", "description": "The studio edge. Even loops along the hem.", "priceCents": 0, "extraDays": 0, "dash": "2 12", "width": 8 },
+    { "id": "whip", "name": "Whip stitch", "description": "A tighter, quieter wrap over the edge.", "priceCents": 0, "extraDays": 0, "dash": "7 5", "width": 6 },
+    { "id": "running", "name": "Running stitch", "description": "A light dashed line set in from the edge.", "priceCents": 0, "extraDays": 0, "dash": "4 8", "width": 4 },
+    { "id": "picot", "name": "Picot edge", "description": "Small loops that read as scallops.", "priceCents": 600, "extraDays": 0, "dash": "1 14", "width": 9 },
+    { "id": "heirloom", "name": "Heirloom satin", "description": "A dense satin border. Adds two studio days.", "priceCents": 1000, "extraDays": 2, "dash": "0", "width": 7 }
+  ],
+  "threads": [
+    { "id": "rose", "name": "Rose", "hex": "#b76e7c" },
+    { "id": "berry", "name": "Berry", "hex": "#7d384c" },
+    { "id": "gold", "name": "Antique gold", "hex": "#8a6a2f" },
+    { "id": "cream", "name": "Cream", "hex": "#f3ead7" },
+    { "id": "black", "name": "Black", "hex": "#241c20" },
+    { "id": "pumpkin", "name": "Pumpkin", "hex": "#c45512" },
+    { "id": "evergreen", "name": "Evergreen", "hex": "#1f4d3a" },
+    { "id": "holly", "name": "Holly red", "hex": "#9d2b35" }
+  ],
+  "motifs": [
+    { "id": "none", "name": "No motif", "priceCents": 0, "themes": [] },
+    { "id": "paw", "name": "Paw", "priceCents": 800, "themes": [] },
+    { "id": "heart", "name": "Heart", "priceCents": 800, "themes": [] },
+    { "id": "bone", "name": "Bone", "priceCents": 800, "themes": [] },
+    { "id": "star", "name": "Star", "priceCents": 800, "themes": [] },
+    { "id": "pumpkin", "name": "Pumpkin", "priceCents": 800, "themes": ["halloween"] },
+    { "id": "bat", "name": "Bat", "priceCents": 800, "themes": ["halloween"] },
+    { "id": "holly", "name": "Holly", "priceCents": 800, "themes": ["christmas"] },
+    { "id": "snowflake", "name": "Snowflake", "priceCents": 800, "themes": ["christmas"] }
+  ],
+  "monogram": {
+    "priceCents": 600,
+    "maxLength": 12,
+    "description": "The dog's name, centered, in the thread color you picked. Letters, numbers, spaces, apostrophes, and hyphens."
+  }
+}

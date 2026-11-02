@@ -1,0 +1,65 @@
+[
+  {
+    "id": "blush",
+    "name": "Blush atelier",
+    "season": "Everyday",
+    "imageKey": "hero",
+    "imageAlt": "Cream dog wearing a blush linen bandana with rose blanket stitching, sitting on a pale pink bungalow porch.",
+    "summary": "The house palette. Blush linen, rose blanket stitch, no motif unless you ask for one.",
+    "metaDescription": "Everyday blush dog bandanas from Stitch & Stella in Houston. Choose linen or gingham, the edge stitch, and a name.",
+    "paragraphs": [
+      "Blush atelier is the bandana the studio starts from: light cloth, a rose or berry edge, and room to add a name. It is the everyday cut for a Heights sidewalk or a Garden Oaks yard.",
+      "Houston heat is the constraint. The blush cloths are linen and cotton, not a costume layer. The stitch is what makes it yours."
+    ],
+    "preset": {
+      "shapeId": "triangle",
+      "fabricId": "blush-linen",
+      "sizeId": "m",
+      "edgeId": "blanket",
+      "threadId": "rose",
+      "motifId": "none"
+    }
+  },
+  {
+    "id": "halloween",
+    "name": "Halloween",
+    "season": "October",
+    "imageKey": "halloween",
+    "imageAlt": "Black dog wearing a midnight bandana with orange blanket stitching and a small pumpkin motif, seated against a blush wall with maple leaves.",
+    "summary": "Midnight or rust cotton, pumpkin-orange blanket stitch, and a pumpkin or a bat. Still a cotton bandana. October in Houston is warm.",
+    "metaDescription": "Halloween dog bandanas stitched in Houston by Stitch & Stella. Midnight or rust cloth, orange stitch, pumpkin or bat motif.",
+    "paragraphs": [
+      "Halloween at this studio is a black or rust bandana with a pumpkin-orange edge and a small motif. It is not a costume that traps heat. Houston evenings in October are still warm enough that the dog is wearing cotton.",
+      "Order before the second week of October if you want it for the holiday. Heirloom satin adds two studio days on top of the usual five."
+    ],
+    "preset": {
+      "shapeId": "triangle",
+      "fabricId": "midnight",
+      "sizeId": "m",
+      "edgeId": "blanket",
+      "threadId": "pumpkin",
+      "motifId": "pumpkin"
+    }
+  },
+  {
+    "id": "christmas",
+    "name": "Christmas",
+    "season": "December",
+    "imageKey": "christmas",
+    "imageAlt": "Cream dog wearing an ivory bandana with evergreen blanket stitching and an embroidered holly sprig, in a blush-toned room.",
+    "summary": "Ivory or evergreen cotton, a green or holly-red edge, and holly or a snowflake. No fleece. A Houston December does not need it.",
+    "metaDescription": "Christmas dog bandanas from Stitch & Stella in Houston. Ivory or evergreen cloth, holly or snowflake, stitched to order.",
+    "paragraphs": [
+      "The Christmas bandana is ivory or evergreen cotton with a green or holly-red stitch. Holly and the snowflake are the motifs. The cloth stays light because a Houston December afternoon is not a northern winter.",
+      "For a bandana in hand by Christmas Eve, send the ticket by December 10. Heirloom edges need two extra studio days, so send those earlier."
+    ],
+    "preset": {
+      "shapeId": "triangle",
+      "fabricId": "ivory",
+      "sizeId": "m",
+      "edgeId": "blanket",
+      "threadId": "evergreen",
+      "motifId": "holly"
+    }
+  }
+]

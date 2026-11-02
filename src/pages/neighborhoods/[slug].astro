@@ -1,0 +1,82 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import neighborhoods from '../../data/neighborhoods.json';
+import { photoFor } from '../../lib/images';
+import { absolute, breadcrumb, graph } from '../../lib/schema';
+
+export function getStaticPaths() {
+  return neighborhoods.map((neighborhood) => ({
+    params: { slug: neighborhood.id },
+    props: { neighborhood },
+  }));
+}
+
+interface Props {
+  neighborhood: (typeof neighborhoods)[number];
+}
+
+const { neighborhood } = Astro.props;
+const jsonLd = graph(Astro.site, [
+  {
+    '@type': 'Service',
+    name: `Custom dog bandanas in ${neighborhood.name}`,
+    serviceType: 'Handmade dog bandana',
+    areaServed: {
+      '@type': 'AdministrativeArea',
+      name: `${neighborhood.name}, Houston, Texas`,
+      sameAs: [neighborhood.wikidata, neighborhood.wikipedia],
+    },
+    provider: { '@id': absolute(Astro.site, '/#business') },
+    hoursAvailable: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: neighborhood.handoff.dayOfWeek,
+      opens: neighborhood.handoff.opens,
+      closes: neighborhood.handoff.closes,
+    },
+  },
+  breadcrumb(Astro.site, [
+    { name: 'Home', path: '/' },
+    { name: 'Houston', path: '/houston' },
+    { name: neighborhood.name, path: `/neighborhoods/${neighborhood.id}` },
+  ]),
+]);
+---
+
+<Base
+  title={`${neighborhood.pageTitle} | Stitch & Stella`}
+  description={neighborhood.metaDescription}
+  image={photoFor(neighborhood.imageKey)}
+  jsonLd={jsonLd}
+>
+  <article class="mx-auto grid max-w-6xl items-start gap-10 px-5 py-14 md:grid-cols-2">
+    <div>
+      <p class="text-sm font-semibold uppercase tracking-wide text-rose-800">Houston · {neighborhood.zips.join(' · ')}</p>
+      <h1 class="mt-3 font-serif text-5xl leading-tight">{neighborhood.pageTitle}</h1>
+      <div class="mt-5 space-y-4 text-lg leading-8 text-ink-soft">
+        {neighborhood.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+      <p class="mt-6 font-semibold">{neighborhood.handoff.label}</p>
+      <ul class="mt-3 list-disc space-y-1 pl-5 text-ink-soft">
+        {neighborhood.landmarks.map((landmark) => <li>{landmark}</li>)}
+      </ul>
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <a class="inline-flex min-h-12 items-center justify-center rounded-full bg-rose-800 px-5 font-semibold text-white" href="/customize">Design a bandana</a>
+        <a class="inline-flex min-h-12 items-center justify-center rounded-full border border-rose-800 px-5 font-semibold text-rose-800" href={`/contact?neighborhood=${neighborhood.id}`}>
+          Ask about this handoff
+        </a>
+      </div>
+    </div>
+    <Image
+      src={photoFor(neighborhood.imageKey)}
+      alt={neighborhood.imageAlt}
+      widths={[480, 900]}
+      sizes="(min-width: 768px) 34rem, 100vw"
+      quality={60}
+      format="avif"
+      loading="eager"
+      fetchpriority="high"
+      class="h-auto w-full rounded-3xl"
+    />
+  </article>
+</Base>

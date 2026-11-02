@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.stitchandstella.com/data/order-intent.schema.json",
+  "title": "StitchTicket",
+  "description": "A made-to-order dog bandana request for Stitch & Stella. Submitting a ticket does not charge a card. The studio confirms by email.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["themeId", "shapeId", "fabricId", "sizeId", "edgeId", "threadId", "motifId", "customer"],
+  "properties": {
+    "themeId": { "type": "string", "description": "Theme id from /data/themes.json" },
+    "shapeId": { "type": "string" },
+    "fabricId": { "type": "string" },
+    "sizeId": { "type": "string" },
+    "edgeId": { "type": "string" },
+    "threadId": { "type": "string" },
+    "motifId": { "type": "string" },
+    "monogram": { "type": "string", "maxLength": 12 },
+    "customer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "email", "neighborhoodId", "fulfillmentId"],
+      "properties": {
+        "name": { "type": "string", "minLength": 2, "maxLength": 80 },
+        "email": { "type": "string", "format": "email" },
+        "dog": { "type": "string", "maxLength": 40 },
+        "neighborhoodId": { "type": "string", "enum": ["the-heights", "garden-oaks", "other-houston"] },
+        "fulfillmentId": { "type": "string", "enum": ["heights-porch", "garden-oaks-drop", "ask"] },
+        "note": { "type": "string", "maxLength": 280 }
+      }
+    }
+  }
+}

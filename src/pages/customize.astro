@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+import Customizer from '../components/Customizer.astro';
+import { priceConfiguration, resolveSelection } from '../lib/pricing';
+import { graph, productNode } from '../lib/schema';
+
+const selection = resolveSelection(Astro.url.searchParams);
+const priced = priceConfiguration(selection);
+const jsonLd = graph(Astro.site, [productNode(Astro.site)]);
+---
+
+<Base
+  title="Design a dog bandana | Stitch & Stella"
+  description="Choose the cloth, the neck size, the edge stitch, the thread, a motif, and your dog's name. Stitch & Stella shows the price before you send the ticket."
+  jsonLd={jsonLd}
+  showOrderBar={false}
+>
+  <section class="mx-auto max-w-6xl px-5 py-12 md:py-16">
+    <p class="text-sm font-semibold uppercase tracking-wide text-rose-800">The designer</p>
+    <h1 class="mt-3 max-w-3xl font-serif text-5xl leading-tight">Design the bandana and the stitch.</h1>
+    <p class="mt-4 max-w-2xl text-lg leading-8 text-ink-soft">
+      Pick a theme if you want a starting point. Then change the cut, the cloth, the edge, and the name. The total on this page is the total on the ticket.
+    </p>
+    <div class="mt-10">
+      <Customizer selection={selection} priced={priced} />
+    </div>
+  </section>
+</Base>

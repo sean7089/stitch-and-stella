@@ -1,0 +1,37 @@
+{
+  "name": "Stitch & Stella",
+  "legalName": "Stitch & Stella",
+  "tagline": "Handmade dog bandanas, stitched in Houston.",
+  "description": "Stitch & Stella stitches made-to-order dog bandanas in Houston, Texas. You choose the cloth and the stitching. Finished bandanas are handed off in the Heights (77008 and 77009) and Garden Oaks (77018).",
+  "url": "https://www.stitchandstella.com",
+  "email": "hello@stitchandstella.com",
+  "phone": "",
+  "contentUpdated": "2026-11-01",
+  "priceCurrency": "USD",
+  "city": {
+    "name": "Houston",
+    "region": "TX",
+    "country": "US",
+    "wikidata": "https://www.wikidata.org/wiki/Q16555",
+    "wikipedia": "https://en.wikipedia.org/wiki/Houston"
+  },
+  "logo": "/favicon.svg",
+  "image": "/brand/hero.jpg",
+  "materials": ["Prewashed cotton", "Prewashed linen", "Cotton embroidery floss"],
+  "care": [
+    "Machine wash cold with similar colors.",
+    "Hang dry.",
+    "Skip the dryer so the edge stitch stays even."
+  ],
+  "safety": [
+    "Take a tie-on bandana off when you cannot see the dog, including crates, dog parks, and rough play.",
+    "A collar slide stays on the collar you already trust. It does not replace a collar or a harness.",
+    "If a tie knot can catch on a fence, a crate, or another dog, use the collar slide instead."
+  ],
+  "notIncluded": [
+    "Payment is not taken on this website. The studio confirms the ticket by email before anything is owed.",
+    "There is no shop floor to walk into.",
+    "Handoffs are the Saturday Heights window and the Thursday Garden Oaks drop. Anywhere else is a question on the ticket, not a promise."
+  ],
+  "replyHours": "Tuesday through Saturday. Saturday is the Heights handoff. Thursday evening is the Garden Oaks drop."
+}

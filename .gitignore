@@ -1,0 +1,9 @@
+node_modules/
+Photos/
+dist/
+.astro/
+chrome-headless-shell/
+.DS_Store
+*.log
+.env
+.env.*

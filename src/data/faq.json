@@ -1,0 +1,65 @@
+[
+  {
+    "id": "where",
+    "question": "Where is Stitch & Stella?",
+    "answer": [
+      "Stitch & Stella is a made-to-order dog bandana studio in Houston, Texas. Finished bandanas are handed off in the Heights (77008 and 77009) on Saturday mornings and in Garden Oaks (77018) on Thursday evenings. There is no shop floor."
+    ]
+  },
+  {
+    "id": "price",
+    "question": "How much is a custom dog bandana?",
+    "answer": [
+      "The design page adds the cloth, the cut, the neck size, the edge, the motif, and a name, then shows the total before you send a ticket. The same numbers are listed on the questions page. Nothing is charged on this website. The studio confirms the ticket by email first."
+    ]
+  },
+  {
+    "id": "measure",
+    "question": "How do I measure my dog's neck?",
+    "answer": [
+      "Use a soft tape where the collar sits, snug but not tight. If you are between sizes, size up. The ranges on the designer are neck measurements. The ties on a triangle or kerchief are extra length and are not part of the number."
+    ]
+  },
+  {
+    "id": "time",
+    "question": "How long does stitching take?",
+    "answer": [
+      "Most tickets are ready in five studio days after the studio confirms the email. Heirloom satin adds two days. Halloween bandanas should be requested by the second week of October. Christmas bandanas should be requested by December 10, earlier if you want the heirloom edge."
+    ]
+  },
+  {
+    "id": "wash",
+    "question": "Can I wash the bandana?",
+    "answer": [
+      "Yes. Machine wash cold with similar colors and hang dry. Skip the dryer so the edge stitch stays even."
+    ]
+  },
+  {
+    "id": "safety",
+    "question": "Is a tie-on bandana safe?",
+    "answer": [
+      "Take a tie-on off when you cannot see the dog, including crates, dog parks, and rough play. A knot can catch. The collar slide slips over a collar you already trust and does not add a loose tie. A bandana is not a collar or a harness."
+    ]
+  },
+  {
+    "id": "heights",
+    "question": "Do you hand off in the Heights?",
+    "answer": [
+      "Yes. Saturday, 9 to 11 a.m., for 77008 and 77009. The reply to your stitch ticket names the block. 77007 is the western edge; ask on the ticket rather than assuming the walk is short."
+    ]
+  },
+  {
+    "id": "garden-oaks",
+    "question": "Do you drop bandanas in Garden Oaks?",
+    "answer": [
+      "Yes. Thursday, 5 to 7 p.m., in Garden Oaks, 77018. Neighbors in Oak Forest should say so on the ticket. The studio will say if that Thursday’s drop can reach them."
+    ]
+  },
+  {
+    "id": "fit",
+    "question": "What if the size is wrong?",
+    "answer": [
+      "Bring the dog to the handoff if you can. A tie-on can be loosened or tightened at the knot. If the neck measurement was off and the cloth cannot be made to sit right, the studio will restitch the size once. Write that in the reply email. The collar slide has less room to adjust, so measure the collar it will sit on."
+    ]
+  }
+]

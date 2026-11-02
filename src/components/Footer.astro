@@ -1,0 +1,47 @@
+---
+import business from '../data/business.json';
+import neighborhoods from '../data/neighborhoods.json';
+---
+
+<footer class="border-t border-blush-200 bg-blush-100">
+  <div class="mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-4">
+    <div class="md:col-span-2">
+      <p class="font-serif text-2xl">Stitch &amp; Stella</p>
+      <address class="mt-3 text-sm leading-6 text-ink-soft not-italic">
+        {business.name}<br />
+        {business.city.name}, {business.city.region}<br />
+        Heights 77008 and 77009<br />
+        Garden Oaks 77018<br />
+        <a class="font-semibold text-rose-800 underline" href={`mailto:${business.email}`}>{business.email}</a>
+      </address>
+      <p class="mt-3 max-w-sm text-sm leading-6 text-ink-soft">{business.replyHours}</p>
+    </div>
+    <nav aria-label="Footer">
+      <p class="text-sm font-semibold uppercase tracking-wide text-rose-800">Visit</p>
+      <ul class="mt-3 space-y-2 text-sm">
+        <li><a class="inline-flex min-h-11 items-center underline decoration-blush-300 underline-offset-4" href="/customize">Design a bandana</a></li>
+        <li><a class="inline-flex min-h-11 items-center underline decoration-blush-300 underline-offset-4" href="/themes">Themes</a></li>
+        <li><a class="inline-flex min-h-11 items-center underline decoration-blush-300 underline-offset-4" href="/houston">Houston</a></li>
+        <li><a class="inline-flex min-h-11 items-center underline decoration-blush-300 underline-offset-4" href="/faq">Questions</a></li>
+        <li><a class="inline-flex min-h-11 items-center underline decoration-blush-300 underline-offset-4" href="/contact">Stitch ticket</a></li>
+      </ul>
+    </nav>
+    <div>
+      <p class="text-sm font-semibold uppercase tracking-wide text-rose-800">Neighborhoods</p>
+      <ul class="mt-3 space-y-2 text-sm">
+        {
+          neighborhoods.map((item) => (
+            <li>
+              <a class="inline-flex min-h-11 items-center underline decoration-blush-300 underline-offset-4" href={`/neighborhoods/${item.id}`}>
+                {item.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="mt-6 text-sm">
+        <a class="inline-flex min-h-11 items-center underline decoration-blush-300 underline-offset-4" href="/llms.txt">Facts for search assistants</a>
+      </p>
+    </div>
+  </div>
+</footer>
